@@ -1,9 +1,8 @@
 using System;
 using fastipc.Bus;
-using fastIpc.Example.Messages;
+using fastIpc.Examples.Messages;
 
-namespace fastipc.Examples.InProcess
-{
+namespace fastipc.Examples.ProcessA {
 	public class ProcessAsHost : IHandleMessage {
 		private readonly IBus _bus;
 

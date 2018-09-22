@@ -1,8 +1,7 @@
-﻿using System;
-using fastipc.Message;
+﻿using fastipc.Message;
 using ProtoBuf;
 
-namespace fastIpc.Example.Messages {
+namespace fastIpc.Examples.Messages {
 	[ProtoContract]
 	public class Ping : Message { }
 

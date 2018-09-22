@@ -1,8 +1,8 @@
 ﻿using System;
 using fastipc.Bus;
-using fastIpc.Example.Messages;
+using fastIpc.Examples.Messages;
 
-namespace fastipc.Examples.InProcess {
+namespace fastipc.Examples.ProcessA {
 	static class Program {
 		static void Main(string[] args) {
 			var pipeName = new SimpleStringPipeName(name: "Example");
