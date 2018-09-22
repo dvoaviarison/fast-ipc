@@ -21,8 +21,10 @@ namespace fastipc.Tests
 		private void can_exchange_messages()
 		{
 			var timeout = TimeSpan.FromSeconds(3);
-			var inDone = new ManualResetEventSlim(false);
-			var outDone = new ManualResetEventSlim(false);
+			var processADone = new ManualResetEventSlim(false);
+			var processBDone = new ManualResetEventSlim(false);
+
+			// Process A Simulation
 			new Thread(() =>
 					{
 						var pipeName = new SimpleStringPipeName(
@@ -31,11 +33,11 @@ namespace fastipc.Tests
 						var bus = new NamedPipeBus(pipeName: pipeName);
 						var inHost = new TestHandler(
 							handleStringContent : msg => {
-								_logger.WriteLine($"[In] Received new message of type {msg.GetType().Name}: {msg.Content}");
+								_logger.WriteLine($"[ProcessA] Received new message of type {msg.GetType().Name}: {msg.Content}");
 							},
 							handleTestMessage : msg => {
-								_logger.WriteLine($"[In] Received new message of type {msg.GetType().Name}");
-								inDone.Set();
+								_logger.WriteLine($"[ProcessA] Received new message of type {msg.GetType().Name}");
+								processADone.Set();
 							}
 						);
 
@@ -46,6 +48,7 @@ namespace fastipc.Tests
 					{ IsBackground = true }
 				.Start();
 
+			// Process B Simulation
 			new Thread(() =>
 					{
 						var pipeName = new SimpleStringPipeName(name: "UnitTest");
@@ -53,11 +56,11 @@ namespace fastipc.Tests
 
 						var outHost = new TestHandler(
 							handleStringContent: msg => {
-								_logger.WriteLine($"[Out] Received new message of type {msg.GetType().Name}: {msg.Content}");
+								_logger.WriteLine($"[ProcessB] Received new message of type {msg.GetType().Name}: {msg.Content}");
 							},
 							handleTestMessage: msg => {
-								_logger.WriteLine($"[Out] Received new message of type {msg.GetType().Name}");
-								outDone.Set();
+								_logger.WriteLine($"[ProcessB] Received new message of type {msg.GetType().Name}");
+								processBDone.Set();
 							}
 						);
 
@@ -68,11 +71,16 @@ namespace fastipc.Tests
 					{ IsBackground = true }
 				.Start();
 
-			outDone.Wait(timeout: timeout);
-			inDone.Wait(timeout: timeout);
+			processBDone.Wait(timeout: timeout);
+			processADone.Wait(timeout: timeout);
 
 			Assert.True(
-				condition: outDone.IsSet,
+				condition: processBDone.IsSet,
+				userMessage: "Failed to receive message from 'In'"
+			);
+
+			Assert.True(
+				condition: processADone.IsSet,
 				userMessage: "Failed to receive message from 'In'"
 			);
 		}
