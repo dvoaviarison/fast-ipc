@@ -10,7 +10,7 @@ It includes:
 ## Get started
 To make two process communicate, all you need is to create an IPC bus in each process, then listen/publish on that bus, as follows:
 
-**ProcessA**: One process has to be described as `In`
+**ProcessA**: One processes has to be described as `In`
 ```csharp
 static void Main(string[] args) {
 	var pipeName = new SimpleStringPipeName(name: "Example");
