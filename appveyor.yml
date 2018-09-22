@@ -1,8 +1,8 @@
-version: 1.0.{build}
+vversion: 1.0.{build}
 configuration: Release
 platform: Any CPU
 before_build:
-- msbuild /t:restore ./src/fastipc.sln
+- cmd: msbuild restore ./src/fastipc.sln
 build:
   project: ./src/fastipc.sln
   publish_nuget: true
@@ -11,6 +11,6 @@ notifications:
 - provider: Slack
   incoming_webhook: https://hooks.slack.com/services/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
   channel: '#appveyor-ci'
-  on_build_success: true
-  on_build_failure: true
+  on_build_success: false
+  on_build_failure: false
   on_build_status_changed: true
