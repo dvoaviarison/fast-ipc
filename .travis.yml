@@ -1,0 +1,9 @@
+language: csharp
+mono: none
+
+install:
+- dotnet restore
+
+script:
+ - dotnet build fastipc -c release
+ - dotnet test fastipc.tests

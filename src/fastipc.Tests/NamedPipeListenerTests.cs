@@ -76,12 +76,12 @@ namespace fastipc.Tests
 
 			Assert.True(
 				condition: processBDone.IsSet,
-				userMessage: "Failed to receive message from 'In'"
+				userMessage: "Failed to receive message from 'ProcessA'"
 			);
 
 			Assert.True(
 				condition: processADone.IsSet,
-				userMessage: "Failed to receive message from 'In'"
+				userMessage: "Failed to receive message from 'ProcessB'"
 			);
 		}
 	}

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net40</TargetFramework>
+    <Authors>dvoaviarison</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
