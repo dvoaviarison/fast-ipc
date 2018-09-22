@@ -6,7 +6,7 @@ dotnet: 2.0.0
 
 script: 
   - dotnet restore ./src/fastipc.sln
-  - dotnet msbuild ./src/fastipc.sln
+  - dotnet build ./src/fastipc.sln
   - dotnet restore ./src/fastipc.Examples.sln
-  - dotnet msbuild ./src/fastipc.Examples.sln
+  - dotnet build ./src/fastipc.Examples.sln
   - dotnet test ./src/fastipc.Tests/fastipc.Tests.csproj

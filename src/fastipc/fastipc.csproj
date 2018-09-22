@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="protobuf-net" Version="2.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
+		<Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
 </Project>
