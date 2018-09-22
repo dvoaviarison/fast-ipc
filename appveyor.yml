@@ -1,12 +1,12 @@
 version: 1.0.{build}
 configuration: Release
 platform: Any CPU
-before_build:
-- cmd: msbuild restore ./src/fastipc.sln
+nuget:
+  disable_publish_on_pr: true
 build:
   project: ./src/fastipc.sln
   publish_nuget: true
-  verbosity: minimal
+  verbosity: normal
 notifications:
 - provider: Slack
   incoming_webhook: https://hooks.slack.com/services/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
