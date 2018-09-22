@@ -10,6 +10,17 @@ It includes:
 ## Get started
 To make two process communicate, all you need is to create an IPC bus in each process, then listen/publish on that bus, as follows:
 
+**Define your messages**: All messages only needs to inherit from `Message` and be a `ProtoContract` as follows:
+```csharp
+static void Main(string[] args) {
+	[ProtoContract]
+	public class Ping : Message { }
+
+	[ProtoContract]
+	public class Pong : Message { }
+}
+```
+
 **ProcessA**: One processes has to be described as `In`
 ```csharp
 static void Main(string[] args) {
