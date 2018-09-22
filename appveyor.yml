@@ -6,3 +6,7 @@ build:
   project: ./src/fastipc.sln  
 test_script:
   - '%xunit20%\xunit.console.exe ./src/fastipc.Tests/bin/Debug/net462/fastipc.Tests.dll -appveyor'
+notifications:
+- provider: Slack
+  incoming_webhook:
+    secure: https://hooks.slack.com/services/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
