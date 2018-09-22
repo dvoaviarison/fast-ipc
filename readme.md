@@ -1,5 +1,5 @@
 ![HeadBanner](docs/imgs/headbanner.png)
-
+[![Build status](https://ci.appveyor.com/api/projects/status/2x2fegcdfr93hgko?svg=true)](https://ci.appveyor.com/project/dvoaviarison/fast-ipc)
 # Fast IPC
 Fast IPC is an open source library that supports typed messages and brings inter-process communication at a higher level for better usability.
 It includes:
