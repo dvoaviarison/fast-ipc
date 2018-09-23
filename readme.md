@@ -91,7 +91,7 @@ public class ProcessBHost : IHandleMessage {
 
 And voila! ProcessA and ProcessB are communicating
 
-Working examples are available in `src` folder.
+Working examples are available in `src` folder. We also have straightforward example using the [nuget package](https://www.nuget.org/packages/fastipc) : [HERE](https://github.com/dvoaviarison/fastipc-example) 
 
 ## Contribute
 This project is open source. Fork then PR!
