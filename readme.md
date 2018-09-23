@@ -12,13 +12,11 @@ To make two processes communicate, all you need is to create an IPC bus in each 
 
 **Define your messages**: All messages only need to inherit from `Message` and be a `ProtoContract` as follows:
 ```csharp
-static void Main(string[] args) {
-	[ProtoContract]
-	public class Ping : Message { }
+[ProtoContract]
+public class Ping : Message { }
 
-	[ProtoContract]
-	public class Pong : Message { }
-}
+[ProtoContract]
+public class Pong : Message { }
 ```
 
 **ProcessA**: One process has to be described as `In`
