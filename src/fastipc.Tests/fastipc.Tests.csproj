@@ -1,23 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net462</TargetFramework>
-  </PropertyGroup>
+	<Choose>
+		<When Condition="$(OS) == 'Unix' Or $(OS) == 'OSX'">
+			<PropertyGroup>
+				<TargetFramework>netcoreapp2.0</TargetFramework>
+			</PropertyGroup>
+		</When>
+		<When Condition=" $(OS) == 'WINDOWS_NT'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;netcoreapp2.0</TargetFrameworks>
+				</PropertyGroup>
+		</When>
+	</Choose>
 
-  <ItemGroup>
-    <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\fastipc\fastipc.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\fastipc\fastipc.csproj" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.4.1" Condition="'$(TargetFramework)'=='net462'" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+		<PackageReference Include="xunit" Version="2.4.0" />
+		<PackageReference Include="xunit.runner.console" Version="2.4.0" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" Condition="'$(TargetFramework)'!='netcoreapp2.0'" />
+		<DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+	</ItemGroup>
 
 </Project>
