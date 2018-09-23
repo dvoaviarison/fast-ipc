@@ -8,8 +8,8 @@ before_build:
   - msbuild /t:restore ./src/fastipc.sln
 build:
   project: ./src/fastipc.sln
-  publish_nuget: true
-  verbosity: normal
+  publish_nuget: false
+  verbosity: minimal
 test_script:
   - '%xunit20%\xunit.console.exe ./src/fastipc.Tests/bin/Debug/net462/fastipc.Tests.dll -appveyor'
 notifications:
