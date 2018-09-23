@@ -1,14 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net40</TargetFramework>
-    <Authors>dvoaviarison</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Authors>dvoaviarison</Authors>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="protobuf-net" Version="2.4.0" />
-		<Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
+	<Choose>
+		<When Condition="$(OS) == 'Unix' Or $(OS) == 'OSX'">
+			<PropertyGroup>
+				<TargetFramework>netstandard2.0</TargetFramework>
+			</PropertyGroup>
+		</When>
+		<When Condition=" $(OS) == 'WINDOWS_NT'">
+			<PropertyGroup>
+				<TargetFrameworks>net40;netstandard2.0</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+	</Choose>
+
+	<ItemGroup>
+		<PackageReference Include="protobuf-net" Version="2.4.0" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.4.1" Condition="'$(TargetFramework)'!='net40'" />
+		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="4.5.0" Condition="'$(TargetFramework)'=='netstandard2.0'"/>
+		<Reference Include="Microsoft.CSharp" Condition="'$(TargetFramework)'=='net40'" />
+	</ItemGroup>
 
 </Project>
