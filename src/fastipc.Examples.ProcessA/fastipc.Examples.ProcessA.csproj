@@ -1,13 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net462</TargetFramework>
-    <OutputType>Exe</OutputType>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\fastIpc.Examples.Messages\fastipc.Examples.Messages.csproj" />
+	<Choose>
+		<When Condition="$(OS) == 'Unix' Or $(OS) == 'OSX'">
+			<PropertyGroup>
+				<TargetFramework>netstandard2.0</TargetFramework>
+			</PropertyGroup>
+		</When>
+		<When Condition=" $(OS) == 'WINDOWS_NT'">
+			<PropertyGroup>
+				<TargetFramework>net462</TargetFramework>
+			</PropertyGroup>
+		</When>
+	</Choose>
+
+	<ItemGroup>
+		<ProjectReference Include="..\fastIpc.Examples.Messages\fastipc.Examples.Messages.csproj" />
 		<Reference Include="Microsoft.CSharp"/>
-  </ItemGroup>
+	</ItemGroup>
 
 </Project>
