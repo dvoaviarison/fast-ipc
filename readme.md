@@ -19,18 +19,20 @@ public class Ping : Message { }
 public class Pong : Message { }
 ```
 
-**ProcessA**: One process has to be described as `In`
+**ProcessA**: One process has to be described as `In` (see pipe name declaration)
 ```csharp
 static void Main(string[] args) {
-	var pipeName = new SimpleStringPipeName(name: "Example");
+	var pipeName = new SimpleStringPipeName(
+		name: "Example", 
+		side: Side.In /* Optional */);;
 	var bus = new NamedPipeBus(pipeName: pipeName);
-	new ProcessAsHost(bus);
+	new ProcessAHost(bus);
 	...
 }
 ```
 
 ```csharp
-public class ProcessAsHost : IHandleMessage {
+public class ProcessAHost : IHandleMessage {
 	private readonly IBus _bus;
 
 	public ProcessAsHost(IBus bus) {
@@ -53,7 +55,7 @@ public class ProcessAsHost : IHandleMessage {
 }
 ```
 
-**ProcessB**: The other has to be described as `Out`
+**ProcessB**: The other has to be described as `Out` (see pipe name declaration)
 ```csharp
 static void Main(string[] args) {
 	var pipeName = new SimpleStringPipeName(
