@@ -1,7 +1,7 @@
 ![HeadBanner](docs/imgs/headbanner.png)
 [![Build status](https://ci.appveyor.com/api/projects/status/2x2fegcdfr93hgko/branch/master?svg=true)](https://ci.appveyor.com/project/dvoaviarison/fast-ipc/branch/master)
 # Fast IPC
-Fast IPC is an open source library that supports typed messages and brings inter-process communication at a higher level for better usability.
+Fast IPC is an open source .Net library that supports typed messages and brings inter-process communication at a higher level for better usability.
 It includes:
 - Inter process communication layer using named pipes. It supports smart generation of pipe name in case of parent/child processes. Other means of communication are going to be supported in the near future
 - Super fast serialization using protobuf
