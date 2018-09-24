@@ -102,5 +102,5 @@ For now we are using named pipes with limitation to 2 processes communicating.
 We want to introduce TCP and enable multi-tier IPC.
 
 ## Compatibility
-- .Net Framework: net40 and up
-- .Net Standard: netstandard2.0 and up
+- .Net Framework >= net40
+- .Net Standard >= netstandard2.0
