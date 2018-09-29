@@ -32,7 +32,7 @@ namespace fastipc.Bus {
 				_pipeName.Read,
 				PipeDirection.InOut,
 				1,
-				PipeTransmissionMode.Message,
+				PipeTransmissionMode.Byte,
 				PipeOptions.Asynchronous);
 
 			Debug.WriteLine($"Listening on pipe {_pipeName.Read}...");
