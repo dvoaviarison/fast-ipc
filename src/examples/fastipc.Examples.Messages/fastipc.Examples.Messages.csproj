@@ -14,7 +14,7 @@
 	</Choose>
 
 	<ItemGroup>
-		<ProjectReference Include="..\fastipc\fastipc.csproj" />
+	  <ProjectReference Include="..\..\fastipc\fastipc.csproj" />
 	</ItemGroup>
 
 </Project>
