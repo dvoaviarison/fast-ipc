@@ -7,7 +7,7 @@
 	<Choose>
 		<When Condition="$(OS) == 'Unix' Or $(OS) == 'OSX'">
 			<PropertyGroup>
-				<TargetFramework>netcoreapp2.0</TargetFramework>
+				<TargetFramework>net5.0</TargetFramework>
 			</PropertyGroup>
 		</When>
 		<When Condition=" $(OS) == 'WINDOWS_NT'">
@@ -19,7 +19,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\fastIpc.Examples.Messages\fastipc.Examples.Messages.csproj" />
-		<Reference Include="Microsoft.CSharp" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.4.1" Condition="'$(TargetFramework)'!='net40'" />
+		<Reference Include="Microsoft.CSharp" Condition="'$(TargetFramework)'=='net40'" />
 	</ItemGroup>
 
 </Project>

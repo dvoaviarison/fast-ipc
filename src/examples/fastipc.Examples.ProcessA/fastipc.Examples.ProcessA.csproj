@@ -7,7 +7,7 @@
 	<Choose>
 		<When Condition="$(OS) == 'Unix' Or $(OS) == 'OSX'">
 			<PropertyGroup>
-				<TargetFramework>netcoreapp2.0</TargetFramework>
+				<TargetFramework>net5.0</TargetFramework>
 			</PropertyGroup>
 		</When>
 		<When Condition=" $(OS) == 'WINDOWS_NT'">
